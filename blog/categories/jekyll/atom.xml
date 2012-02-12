@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[kgn]]></title>
-  <link href="http://kgn.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Jekyll | kgn]]></title>
+  <link href="http://kgn.github.com/blog/categories/jekyll/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
   <updated>2012-02-11T17:47:24-08:00</updated>
   <id>http://kgn.github.com/</id>
@@ -18,7 +18,7 @@
     <link href="http://kgn.github.com/blog/2012/02/11/octopress-blog/"/>
     <updated>2012-02-11T17:42:00-08:00</updated>
     <id>http://kgn.github.com/blog/2012/02/11/octopress-blog</id>
-    <content type="html"><![CDATA[<p>Trying my hand at blogging again. I&#8217;ve been meaning to try out <a href="http://jekyllrb.com">Jekyll</a> and <a href="http://octopress.org">Octopress</a> for some time now and finally got it setup :)</p>
+    <content type="html"><![CDATA[<p>Trying my hand at blogging again. I've been meaning to try out <a href="http://jekyllrb.com">Jekyll</a> and <a href="http://octopress.org">Octopress</a> for some time now and finally got it setup :)</p>
 ]]></content>
   </entry>
   
