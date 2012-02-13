@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | kgn]]></title>
+  <link href="http://kgn.github.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://kgn.github.com/"/>
+  <updated>2012-02-11T19:36:12-08:00</updated>
+  <id>http://kgn.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Blog]]></title>
+    <link href="http://kgn.github.com/blog/2012/02/11/octopress-blog/"/>
+    <updated>2012-02-11T17:42:00-08:00</updated>
+    <id>http://kgn.github.com/blog/2012/02/11/octopress-blog</id>
+    <content type="html"><![CDATA[<p>Trying my hand at blogging again. I've been meaning to try out <a href="http://jekyllrb.com">Jekyll</a> and <a href="http://octopress.org">Octopress</a> for some time now and finally got it setup :)</p>
+]]></content>
+  </entry>
+  
+</feed>
