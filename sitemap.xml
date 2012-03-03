@@ -2,18 +2,22 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://kgn.github.com/blog/2012/02/11/octopress-blog/</loc>
-        <lastmod>2012-02-13T00:00:53-08:00</lastmod>
+        <lastmod>2012-02-13T00:14:04-08:00</lastmod>
     </url>
     <url>
         <loc>http://kgn.github.com/blog/2012/02/11/play-by-play-featured-by-apple/</loc>
-        <lastmod>2012-02-13T00:09:59-08:00</lastmod>
+        <lastmod>2012-02-13T00:14:04-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kgn.github.com/blog/2012/02/29/my-get-workflow/</loc>
+        <lastmod>2012-03-02T16:03:52-08:00</lastmod>
     </url>
     <url>
         <loc>http://kgn.github.com/blog/archives/</loc>
-        <lastmod>2012-02-13T00:09:59-08:00</lastmod>
+        <lastmod>2012-03-02T16:03:52-08:00</lastmod>
     </url>
     <url>
         <loc>http://kgn.github.com/</loc>
-        <lastmod>2012-02-13T00:09:59-08:00</lastmod>
+        <lastmod>2012-03-02T16:03:52-08:00</lastmod>
     </url>
 </urlset>

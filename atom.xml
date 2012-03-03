@@ -4,7 +4,7 @@
   <title><![CDATA[kgn]]></title>
   <link href="http://kgn.github.com/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-02-13T00:12:06-08:00</updated>
+  <updated>2012-03-02T16:04:18-08:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Get Workflow]]></title>
+    <link href="http://kgn.github.com/blog/2012/02/29/my-get-workflow/"/>
+    <updated>2012-02-29T21:01:00-08:00</updated>
+    <id>http://kgn.github.com/blog/2012/02/29/my-get-workflow</id>
+    <content type="html"><![CDATA[<p>I love <a href="http://git-scm.com">git</a> and <a href="http://github.com">Github</a>, I originally started out with svn then moved to <a href="http://mercurial.selenic.com/">mercurial</a> and even contributed and was an admin on a mercurial app called <a href="https://bitbucket.org/snej/murky/wiki/Home">Murky</a>. But then it became clear that git, with the help of Github, had won. It was added to Xcode 4 and even before that most iOS and web projects were hosted on Github. So I made the switch and never looked back!</p>
+
+<p>I&#8217;ve been using git for almost 2 years now and I&#8217;d like to share some of the tricks I&#8217;ve gathered up and how I work with it. I unfortunately have a quite fragmented workflow split between the command line and two apps, but this allows me to use the best tool for the job. Hopefully this post will give you some new arrows for your git quiver.</p>
+
+<h3>Command Line</h3>
+
+<p>I use the command line for most things branching, merging, checking out new repos and other commands that I don&#8217;t want a higher level tool handling for me, I wanna know exactly what&#8217;s going on. I use a lot of aliases to help this workflow go faster and to remind me of some of git&#8217;s more <em>cryptic</em> commands.</p>
+
+<p>This is what my global config looks like:</p>
+
+<div><script src='https://gist.github.com/760788.js?file=.gitconfig'></script>
+<noscript><pre><code>[alias]
+    cl = clone --recursive
+    un = reset --hard
+    st = status -s
+    aa = add --all
+    ci = commit -m
+    co = checkout
+    cob = checkout -b
+    br = branch
+    rbr = branch -r
+    rmrb = push --delete origin # delete a remote branch
+    rp = remote prune origin # cleanup stale remote branch refs
+    pr = pull --rebase
+    ms = merge --squash
+    sub = submodule add
+    subup = submodule update --init
+    dft = difftool
+    lg = log --graph --format='%C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s \
+    %C(green)(%cr) %C(bold blue)&lt;%an&gt;%C(reset)' --date=relative
+[core]
+    quotepath = false
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+</code></pre></noscript></div>
+
+
+<p>I also use a custom <code>PS1</code> line that shows me which directory I&#8217;m in, the current branch if I&#8217;m in a git repo, and if there are any uncommitted changes.</p>
+
+<pre><code>username@machine[dir](*master)$
+</code></pre>
+
+<div><script src='https://gist.github.com/760788.js?file=.profile'></script>
+<noscript><pre><code>alias cleansvn='find . -name &quot;.svn&quot; -type d -exec rm -rf {} \;'
+alias cleanhg='find . -name &quot;*.orig&quot; -exec rm -rf {} \;'
+alias cleanwin='find . -type f -name &quot;*.lnk&quot; -delete; find . -type f -name &quot;Thumbs.db&quot; -delete; find . -type f -name &quot;thumbs.db&quot; -delete;'
+alias cleanosx='find . -name &quot;.DS_Store&quot; -type f -exec rm -rf {} \;'
+
+#open all files with a given extension under the current directory
+openfiles () { find . -name &quot;*.$1&quot; -type f | xargs open; }
+
+#find files with the given extension that contain the search string
+findinfiles () { grep -r --include &quot;*.$1&quot; &quot;$2&quot; --ignore-case .; }
+
+#open files that the string was found in
+openfindinfiles () { grep -r --include &quot;*.$1&quot; &quot;$2&quot; --ignore-case --files-with-matches . | xargs open; }
+
+# Inspired by: http://henrik.nyh.se/2008/12/git-dirty-prompt
+function parse_git_dirty {
+  [[ $(git status 2&gt; /dev/null | tail -n1) != &quot;nothing to commit (working directory clean)&quot; ]] &amp;&amp; echo &quot;*&quot;
+}
+function parse_git_branch {
+  git branch --no-color 2&gt; /dev/null | sed -e '/^[^*]/d' -e &quot;s/* \(.*\)/($(parse_git_dirty)\1)/&quot;
+}
+
+# username@machine[dir](master)$   # clean working directory
+# username@machine[dir](*master)$  # dirty working directory
+export PS1='\u@\h[$(basename &quot;${PWD}&quot;)]$(parse_git_branch)\$ ' 
+</code></pre></noscript></div>
+
+
+<h3>Gitbox</h3>
+
+<p><a href="http://gitboxapp.com">Gitbox</a> is the newest addition to my git workflow. I had looked at it a while ago and it didn&#8217;t really appeal to me, however the latest version added support for <a href="http://book.git-scm.com/5_submodules.html">submodules</a> which I use in almost every project! This feature is so awesome to be able to visualize what submodules the project is using and what state they are in.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/git/gitbox.png"></p>
+
+<p>It&#8217;s also really nice for managing multiple git repositories because you can see them all in the list view. There are lots of other great features so be sure to check out the <a href="http://gitboxapp.com">Gitbox site</a>.</p>
+
+<h3>GitX</h3>
+
+<p>GitX is the original Mac git clients. I know a lot of people have switched over to using Gitbox, <a href="http://mac.github.com/">Github&#8217;s Mac app</a>, or <a href="http://www.sourcetreeapp.com/">SourceTree</a> but for me GitX is still the best! Even with Gitbox I still use GitX to stage my commits because it has a great diff view that makes it easy to stage chunks or even individual lines.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/git/gitx.png"></p>
+
+<p>Another subtile but great feature of GitX&#8217;s commit view is the grey line in the commit box. I wasn&#8217;t sure what this was for until I read <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">this post</a> about formatting git commits. The first line of a git commit is called the <em>subject</em> and it is used in several of the command line tools like log. It is recommended that the first line of a git commit be less than 50 characters long for readability on the command line and this grey line indicates where that cutoff is!</p>
+
+<p><img class="center" src="http://kgn.github.com/content/git/log.png"></p>
+
+<p>I use <a href="https://github.com/kgn/gitx">my own fork</a> of <a href="http://brotherbard.com/blog/2010/03/experimental-gitx-fork/">Brotherbards&#8217;s GitX</a> where I&#8217;ve added Lion fullscreen support and changed the commit hotkey to <code>⌘+enter</code>.</p>
+
+<h3>Looking forward</h3>
+
+<p>I&#8217;ve talked to Oleg, the developer of Gitbox, and he&#8217;s told me that a diff view is coming to Gitbox that will hopefully have similar functionality to GitX&#8217;s! I can&#8217;t wait for this so I can hopefully whittle my workflow down to just command line and Gitbox.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Play by Play: Featured by Apple]]></title>
