@@ -4,7 +4,7 @@
   <title><![CDATA[kgn]]></title>
   <link href="http://kgn.github.com/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-02T16:04:18-08:00</updated>
+  <updated>2012-03-02T16:05:48-08:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -19,6 +19,9 @@
     <updated>2012-02-29T21:01:00-08:00</updated>
     <id>http://kgn.github.com/blog/2012/02/29/my-get-workflow</id>
     <content type="html"><![CDATA[<p>I love <a href="http://git-scm.com">git</a> and <a href="http://github.com">Github</a>, I originally started out with svn then moved to <a href="http://mercurial.selenic.com/">mercurial</a> and even contributed and was an admin on a mercurial app called <a href="https://bitbucket.org/snej/murky/wiki/Home">Murky</a>. But then it became clear that git, with the help of Github, had won. It was added to Xcode 4 and even before that most iOS and web projects were hosted on Github. So I made the switch and never looked back!</p>
+
+<!-- more -->
+
 
 <p>I&#8217;ve been using git for almost 2 years now and I&#8217;d like to share some of the tricks I&#8217;ve gathered up and how I work with it. I unfortunately have a quite fragmented workflow split between the command line and two apps, but this allows me to use the best tool for the job. Hopefully this post will give you some new arrows for your git quiver.</p>
 
