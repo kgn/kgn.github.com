@@ -4,7 +4,7 @@
   <title><![CDATA[Category: gitbox | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/gitbox/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-02T16:05:48-08:00</updated>
+  <updated>2012-03-02T16:08:42-08:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[My Get Workflow]]></title>
-    <link href="http://kgn.github.com/blog/2012/02/29/my-get-workflow/"/>
+    <title type="html"><![CDATA[My Git Workflow]]></title>
+    <link href="http://kgn.github.com/blog/2012/02/29/my-git-workflow/"/>
     <updated>2012-02-29T21:01:00-08:00</updated>
-    <id>http://kgn.github.com/blog/2012/02/29/my-get-workflow</id>
+    <id>http://kgn.github.com/blog/2012/02/29/my-git-workflow</id>
     <content type="html"><![CDATA[<p>I love <a href="http://git-scm.com">git</a> and <a href="http://github.com">Github</a>, I originally started out with svn then moved to <a href="http://mercurial.selenic.com/">mercurial</a> and even contributed and was an admin on a mercurial app called <a href="https://bitbucket.org/snej/murky/wiki/Home">Murky</a>. But then it became clear that git, with the help of Github, had won. It was added to Xcode 4 and even before that most iOS and web projects were hosted on Github. So I made the switch and never looked back!</p>
 
 <!-- more -->
