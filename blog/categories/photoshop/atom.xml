@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Photoshop | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/photoshop/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-15T01:39:24-07:00</updated>
+  <updated>2012-03-15T01:41:32-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -31,7 +31,7 @@
 
 <p><img class="center" src="http://kgn.github.com/content/photoshop/appbar.png"></p>
 
-<p>Going down the list of <em>hidden</em> panels, first are my actions. I don't use any custom actions because <a href="http://bjango.com/articles/actions/">Marc Edwards has made actions</a> for everything I've needed! The one I used the most is <code>Don't colour manage</code> I run that constantly to make sure my documents don't contain any color profiles.</p>
+<p>Going down the list of <em>hidden</em> panels, first are my actions. I don't use any custom actions because <a href="http://twitter.com/marcedwards">Marc Edwards</a> has made <a href="http://bjango.com/articles/actions/">actions</a> for everything I've needed! The one I used the most is <code>Don't colour manage</code> I run that constantly to make sure my documents don't contain any color profiles.</p>
 
 <p><img class="center" src="http://kgn.github.com/content/photoshop/actions.png"></p>
 
@@ -45,7 +45,7 @@
 
 <p><img class="center" src="http://kgn.github.com/content/photoshop/guideguide.png"></p>
 
-<p>Last, my the newest addition to the panel, a new extension that adds an awesome new color picker to Photoshop: <a href="http://theindustry.cc/2012/03/13/coolorus-color-picker-for-photoshop">Coolorus</a>.</p>
+<p>Last, my newest addition to the panel, a new extension that adds an awesome new color picker to Photoshop: <a href="http://theindustry.cc/2012/03/13/coolorus-color-picker-for-photoshop">Coolorus</a>.</p>
 
 <p><img class="center" src="http://kgn.github.com/content/photoshop/coolorus.png"></p>
 
@@ -53,13 +53,13 @@
 
 <p><img class="center" src="http://kgn.github.com/content/photoshop/snap.png"></p>
 
-<p>Unfortunately this option is not on all of the shapes, most notably circles. So to draw circles that snap to pixels I keep my radius ridiculously high which produces pixel prefect circles.</p>
+<p>Unfortunately this option is not on all of the shapes, most notably circles. So to draw circles that snap to pixels I keep my radius ridiculously high which produces pixel perfect circles.</p>
 
 <p>Norm's UI Toolkit includes some great custom shapes that I use a lot, especially the social media icons.</p>
 
 <p><img class="center" src="http://kgn.github.com/content/photoshop/shapes.png"></p>
 
-<p>I hope this was useful and I hope to put together some more Photoshop tips. If you haven't already read the articles on <a href="http://bjango.com/articles/">bjango.com</a> stop what you are doing an go read them all!</p>
+<p>I hope this was useful and I hope to put together some more Photoshop tips. If you haven't already read the articles on <a href="http://bjango.com/articles/">bjango.com</a> stop what you are doing an go read them all right now!</p>
 ]]></content>
   </entry>
   
