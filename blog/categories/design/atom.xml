@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Design | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/design/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-15T01:38:16-07:00</updated>
+  <updated>2012-03-15T01:39:24-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -19,6 +19,9 @@
     <updated>2012-03-15T00:55:00-07:00</updated>
     <id>http://kgn.github.com/blog/2012/03/15/my-photoshop-setup</id>
     <content type="html"><![CDATA[<p>I am a minimalist, it helps me stay focused free of clutter and distraction. There is a lot of clutter in Photoshop that I try to trim down as much as possible. I've also picked up a lot of plugins and best practices over the years that I've like to share to help improve your Photoshop workflow for interface design.</p>
+
+<!-- more -->
+
 
 <p>First of all I keep a very clean UI with locked elements. If you drag a panel, like the layers, to a screen edge it will lock to that edge. So I have the tools locked to the left and layers locked to the right. The number of layers in my documents get huge so I like to give layers as much room as possible so I don't put any panels above or below them. There are a couple of other panels I use frequently that I have locked to the layers panel but minimized. This keeps them out of the way but clicking on the icon shows the full panel, then I can simply click on the icon again to dismiss it.</p>
 
