@@ -9,9 +9,10 @@ footer: true
 
 categories: 
 - git
-- gitbox
-- gitx
-- github
+- Gitbox
+- GitX
+- GitHub
+- workflow
 
 ---
 
