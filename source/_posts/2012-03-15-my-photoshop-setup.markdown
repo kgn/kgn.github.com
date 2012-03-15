@@ -14,7 +14,7 @@ categories:
 
 ---
 
-I am a minimalist, it helps me stay focused free of clutter and distraction. There is a lot of clutter in Photoshop that I try to trim down as much as possible. I've also picked up a lot of plugins and best practices over the years that I've like to share to help improve your Photoshop workflow for interface design.
+I am a minimalist, it helps me stay focused free of clutter and distraction. There is a lot of clutter in Photoshop that I try to trim down as much as possible. I've also picked up a lot of plugins and best practices over the years that I'd like to share to help improve your Photoshop workflow for interface design.
 
 <!-- more -->
 
@@ -26,7 +26,7 @@ I also hide the *Application Bar*, I have no use for this bar and so hiding it f
 
 {% img center http://kgn.github.com/content/photoshop/appbar.png %}
 
-Going down the list of *hidden* panels, first are my actions. I don't use any custom actions because [Marc Edwards](http://twitter.com/marcedwards) has made [actions](http://bjango.com/articles/actions/) for everything I've needed! The one I used the most is `Don't colour manage` I run that constantly to make sure my documents don't contain any color profiles.
+Going down the list of *hidden* panels, first are my actions. I don't use any of my own actions because [Marc Edwards](http://twitter.com/marcedwards) has made [actions](http://bjango.com/articles/actions/) for everything I've needed! The one I used the most is `Don't colour manage` I run that constantly to make sure my documents don't contain any color profiles.
 
 {% img center http://kgn.github.com/content/photoshop/actions.png %}
 
@@ -44,7 +44,7 @@ Last, my newest addition to the panel, a new extension that adds an awesome new 
 
 {% img center http://kgn.github.com/content/photoshop/coolorus.png %}
 
-Almost everything I do in Photoshop revolves around pixel perfect vectors, one of the best way to achieve pixel perfection is to use the `Snap to Pixels` option on most of the vector shapes.
+Almost everything I do in Photoshop revolves around pixel perfect vectors, one of the best ways to achieve pixel perfection is to use the `Snap to Pixels` option on most of the vector shapes.
 
 {% img center http://kgn.github.com/content/photoshop/snap.png %}
 
