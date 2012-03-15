@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: git | kgn]]></title>
-  <link href="http://kgn.github.com/blog/categories/git/atom.xml" rel="self"/>
+  <title><![CDATA[Category: workflow | kgn]]></title>
+  <link href="http://kgn.github.com/blog/categories/workflow/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
   <updated>2012-03-15T01:37:50-07:00</updated>
   <id>http://kgn.github.com/</id>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Photoshop Setup]]></title>
+    <link href="http://kgn.github.com/blog/2012/03/15/my-photoshop-setup/"/>
+    <updated>2012-03-15T00:55:00-07:00</updated>
+    <id>http://kgn.github.com/blog/2012/03/15/my-photoshop-setup</id>
+    <content type="html"><![CDATA[<p>I am a minimalist, it helps me stay focused free of clutter and distraction. There is a lot of clutter in Photoshop that I try to trim down as much as possible. I've also picked up a lot of plugins and best practices over the years that I've like to share to help improve your Photoshop workflow for interface design.</p>
+
+<p>First of all I keep a very clean UI with locked elements. If you drag a panel, like the layers, to a screen edge it will lock to that edge. So I have the tools locked to the left and layers locked to the right. The number of layers in my documents get huge so I like to give layers as much room as possible so I don't put any panels above or below them. There are a couple of other panels I use frequently that I have locked to the layers panel but minimized. This keeps them out of the way but clicking on the icon shows the full panel, then I can simply click on the icon again to dismiss it.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/layout.png"></p>
+
+<p>I also hide the <em>Application Bar</em>, I have no use for this bar and so hiding it frees up some useful space. You need all the pixels you can get when designing retina apps!</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/appbar.png"></p>
+
+<p>Going down the list of <em>hidden</em> panels, first are my actions. I don't use any custom actions because <a href="http://bjango.com/articles/actions/">Marc Edwards has made actions</a> for everything I've needed! The one I used the most is <code>Don't colour manage</code> I run that constantly to make sure my documents don't contain any color profiles.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/actions.png"></p>
+
+<p>There are some shadow actions that are from <a href="http://dribbble.com/Norm">Norm</a>'s <a href="http://www.uiparade.com/ui-toolkit">UI Toolkit</a>. This leads nicely into the styles I use, also from Norm ;) I removed all the Adobe provided ones cause they are crap, I've done this everywhere where there are Adobe examples: gradients, patterns…</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/styles.png"></p>
+
+<p>Next are the panel for text, they are the standard ones, nothing exciting but useful to be able to quickly pull up and make changes.</p>
+
+<p>Next we get to my favorite Photoshop extension <a href="http://guideguide.me/">GuideGuide</a> by <a href="http://www.cameronmcefee.com">Cameron McEfee</a>. This extension helps you place guides and make grids, so useful for building and laying out interfaces in Photoshop!</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/guideguide.png"></p>
+
+<p>Last, my the newest addition to the panel, a new extension that adds an awesome new color picker to Photoshop: <a href="http://theindustry.cc/2012/03/13/coolorus-color-picker-for-photoshop">Coolorus</a>.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/coolorus.png"></p>
+
+<p>Almost everything I do in Photoshop revolves around pixel perfect vectors, one of the best way to achieve pixel perfection is to use the <code>Snap to Pixels</code> option on most of the vector shapes.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/snap.png"></p>
+
+<p>Unfortunately this option is not on all of the shapes, most notably circles. So to draw circles that snap to pixels I keep my radius ridiculously high which produces pixel prefect circles.</p>
+
+<p>Norm's UI Toolkit includes some great custom shapes that I use a lot, especially the social media icons.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/photoshop/shapes.png"></p>
+
+<p>I hope this was useful and I hope to put together some more Photoshop tips. If you haven't already read the articles on <a href="http://bjango.com/articles/">bjango.com</a> stop what you are doing an go read them all!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My Git Workflow]]></title>
