@@ -1,0 +1,53 @@
+---
+layout: post
+title: "nest"
+date: 2012-03-15 21:34
+
+comments: true
+sharing: true
+footer: true
+
+categories: 
+- nest
+- home
+- thermostat
+
+---
+
+I got my [nest](http://nest.com) today! I was on the waiting list and a week ago I got an email letting me know that I could order a nest so I jumped at the chance to have this beautiful and smart device on my wall, it's like a piece of art :)
+
+<!-- more -->
+
+The design is beautiful so I'd like to share some pictures of the unboxing an instillation.
+
+{% img center http://kgn.github.com/content/nest/box.jpg %}
+
+The design of the packaging is very nice, somewhat Apple like but with more of an earthy feel.
+
+When you first open the box you are greeted right away with the nest device.
+
+{% img center http://kgn.github.com/content/nest/open.jpg %}
+
+Underneath this is the rest of the contents, everything you need to install the nest, even a cute little screwdriver.
+
+{% img center http://kgn.github.com/content/nest/contents.jpg %}
+
+The instillation starts by turning off the power and marking the wires. The nest comes with useful stickers you can use to keep track of which wires are which.
+
+{% img center http://kgn.github.com/content/nest/wires.jpg %}
+
+The nest can be mounted right on the wall but unfortunately my old thermostat left holes in the wall that poked out around the nest's sleek circle. Luckily nest comes with two mounting plates, a square one and a rectangular one. I chose the rectangular one in a portrait position because that looked best to me :)
+
+{% img center http://kgn.github.com/content/nest/new_wires.jpg %}
+
+A great design and attention to detail feature of the nest is the built in level on the mount, this makes it so easy to make sure you're nest display will be straight!
+
+I got a little hung up on this part because my heating setup has one `R` wire and the nest has two: `Rh` and `Rc`. Not wanting to hook things up wrong I gave support a call. After two key presses I was talking to a live person who let me know that with my setup I could use either `R` connector. He then stayed on the line until I was done with the rest of the installation, great service!
+
+{% img center http://kgn.github.com/content/nest/final.jpg %}
+
+It looks great on the wall and it has a great user interface. You spin the ring around the face, then lightly press the entire face to select, kinda like an iPod :)
+
+Besides the beauty and machine learning I was looking forward to using the [iPhone and iPad app](http://itunes.apple.com/us/app/nest-mobile/id464988855?mt=8). My thermostat is downstairs so it's so great to be able to control it from bed or while I'm out of the house incase I forget to turn it down. We are living in the future!
+
+{% img center http://kgn.github.com/content/nest/iPhone.png %}
