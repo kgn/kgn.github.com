@@ -22,7 +22,7 @@ The design is beautiful so I'd like to share some pictures of the unboxing an in
 
 {% img center http://kgn.github.com/content/nest/box.jpg %}
 
-The design of the packaging is very nice, somewhat Apple like but with more of an earthy feel.
+The design of the packaging is very nice with a clean and earthy enviormental feel.
 
 When you first open the box you are greeted right away with the nest device.
 
