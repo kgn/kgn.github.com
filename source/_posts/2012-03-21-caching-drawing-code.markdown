@@ -38,7 +38,7 @@ UIImage *image = [UIImage imageForSize:CGSizeMake(32, 32) withDrawingBlock:^{
 }];
 ```
 
-This code will cache your drawing code into a `UIImage` that's `32x32` or `64x64` on a retina display. The uprez for retina is automatically handled in this function.
+This code will cache your drawing code into a `UIImage` that's `32x32` or `64x64` on a retina display. The uprez for retina is automatically handled in this function, you can see what this function is doing [here](https://github.com/kgn/BBlock/blob/master/UIImage%2BBBlock.m).
 
 ## The example app
 
@@ -116,6 +116,8 @@ There are lots of other ways to used drawing code cached into images. In apps wh
     [image drawInRect:self.bounds];
 }
 ```
+
+*This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation, like storing and comparing the size of the view. Also `static` couldn't be used, but you could use a `UIImage` ivar instead.*
 
 Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images.
 
