@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-22T22:50:48-07:00</updated>
+  <updated>2012-03-22T22:55:50-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -136,6 +136,8 @@ if(image == nil){
 ```</p>
 
 <p>Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images.</p>
+
+<p>Hit me up on twitter(<a href="http://twitter.com/_kgn">@_kgn</a>) if you want to discuss this post.</p>
 ]]></content>
   </entry>
   
