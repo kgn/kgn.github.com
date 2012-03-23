@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-22T22:46:28-07:00</updated>
+  <updated>2012-03-22T22:50:48-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -48,7 +48,7 @@ UIImage *image = [UIImage imageForSize:CGSizeMake(32, 32) withDrawingBlock:<sup>
 
 <h2>The example app</h2>
 
-<p>Ok let's jump into the code of the example app! As I said this app contains a button and a popup. Let's look at the popup first. The popup consists of a <code>UIView</code> that contains a <code>UIImageView</code> and <code>UILabel</code>. The <code>UILabel</code> is just a standard label, nothing fancy.</p>
+<p>Ok let's jump into the code of the example app! As I said this app contains a button and a popup. The popup consists of a <code>UIView</code> that contains a <code>UIImageView</code> and <code>UILabel</code>. The <code>UILabel</code> is just a standard label, nothing fancy.</p>
 
 <p><img class="center" src="http://kgn.github.com/content/drawing/layout.png"></p>
 
