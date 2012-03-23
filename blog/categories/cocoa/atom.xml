@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Cocoa | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/cocoa/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-22T23:17:05-07:00</updated>
+  <updated>2012-03-22T23:35:45-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -44,7 +44,7 @@ UIImage *image = [UIImage imageForSize:CGSizeMake(32, 32) withDrawingBlock:<sup>
 <p>}];
 ```</p>
 
-<p>This code will cache your drawing code into a <code>UIImage</code> that's <code>32x32</code> or <code>64x64</code> on a retina display. The uprez for retina is automatically handled in this function.</p>
+<p>This code will cache your drawing code into a <code>UIImage</code> that's <code>32x32</code> or <code>64x64</code> on a retina display. The uprez for retina is automatically handled in this function, you can see what this function is doing <a href="https://github.com/kgn/BBlock/blob/master/UIImage%2BBBlock.m">here</a>.</p>
 
 <h2>The example app</h2>
 
@@ -135,7 +135,7 @@ if(image == nil){
 <p>}
 ```</p>
 
-<p><em>This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation and <code>static</code> couldn't be used, but you could use a <code>UIImage</code> ivar instead.</em></p>
+<p><em>This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation, like storing and comparing the size of the view. Also <code>static</code> couldn't be used, but you could use a <code>UIImage</code> ivar instead.</em></p>
 
 <p>Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images.</p>
 
