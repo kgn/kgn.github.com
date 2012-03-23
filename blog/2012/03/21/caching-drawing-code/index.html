@@ -243,6 +243,8 @@
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
+<p><em>This code example only works for static views were the size doesn&#8217;t change. If the size of the view changed there would need to be some sort of cache invalidation and <code>static</code> couldn&#8217;t be used, but you could use a <code>UIImage</code> ivar instead.</em></p>
+
 <p>Obviously it&#8217;s not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it&#8217;s a win to cache drawing code into images.</p>
 
 <p>Hit me up on twitter(<a href="http://twitter.com/_kgn">@_kgn</a>) if you want to discuss this post.</p>

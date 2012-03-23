@@ -4,7 +4,7 @@
   <title><![CDATA[kgn]]></title>
   <link href="http://kgn.github.com/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-22T22:55:50-07:00</updated>
+  <updated>2012-03-22T23:17:05-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -158,6 +158,8 @@
 </span><span class='line'>    [image drawInRect:self.bounds];
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
+
+<p><em>This code example only works for static views were the size doesn&#8217;t change. If the size of the view changed there would need to be some sort of cache invalidation and <code>static</code> couldn&#8217;t be used, but you could use a <code>UIImage</code> ivar instead.</em></p>
 
 <p>Obviously it&#8217;s not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it&#8217;s a win to cache drawing code into images.</p>
 

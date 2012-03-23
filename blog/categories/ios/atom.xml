@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-22T22:55:50-07:00</updated>
+  <updated>2012-03-22T23:17:05-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -134,6 +134,8 @@ if(image == nil){
 
 <p>}
 ```</p>
+
+<p><em>This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation and <code>static</code> couldn't be used, but you could use a <code>UIImage</code> ivar instead.</em></p>
 
 <p>Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images.</p>
 
