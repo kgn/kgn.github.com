@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: PaintCode | kgn]]></title>
+  <link href="http://kgn.github.com/blog/categories/paintcode/atom.xml" rel="self"/>
+  <link href="http://kgn.github.com/"/>
+  <updated>2012-03-22T22:45:24-07:00</updated>
+  <id>http://kgn.github.com/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Caching Drawing Code]]></title>
+    <link href="http://kgn.github.com/blog/2012/03/21/caching-drawing-code/"/>
+    <updated>2012-03-21T20:52:00-07:00</updated>
+    <id>http://kgn.github.com/blog/2012/03/21/caching-drawing-code</id>
+    <content type="html"><![CDATA[<p>I've been doing more and more drawing in code in my Cocoa projects recently and I'd like to share some tips, specifically how to cache drawing code into images for faster redraw. I've created a simple project for this post, the source of which can be found on <a href="https://github.com/kgn/PaintCodeExample">GitHub</a>. This project is very straight forward, there is a button that when pressed shows a popup that appears for a bit then dismisses it's self. There isn't a single image in the project it's all drawn in code!</p>
+
+<p><img class="center" src="http://kgn.github.com/content/drawing/animation.gif"></p>
+
+<p>The drawing code in this project was <em>painted</em> with <a href="http://theindustry.cc/2012/03/21/paintcode-paint-cocoa-drawing-code">PaintCode</a>, a great new mac app for generating OS X and iOS drawing code.</p>
+
+<p>Drawing in code has several advantages, your app will take up less disk space because it doesn't have to ship with as many images. Depending on the drawing it can be easier to change a couple color values then it is to re-export a bunch of images. It also makes it easier to support multi-resolution displays because the drawing code will scale up and you don't need to manage 1x and 2x images.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/drawing/multires.png"></p>
+
+<p>However drawing in code can cause performance issues because every time <code>setNeedsDisplay</code> is called on a view the drawing code needs to re-evaluate. There are also cases where images are expected, like buttons and image views. Fortunately drawing code can be cached into images and used just like an image loaded off of disk (<em>thanks to <a href="http://twitter.com/badeen">@badeen</a> for originally turning me onto this approach</em>). I've put together a category for <code>UIImage</code> and <code>NSImage</code> in my <a href="https://github.com/kgn/BBlock">BBlock</a> project that makes creating images with drawing code easier.</p>
+
+<p>```
+UIImage *image = [UIImage imageForSize:CGSizeMake(32, 32) withDrawingBlock:<sup>{</sup></p>
+
+<pre><code>// Drawing code…   
+</code></pre>
+
+<p>}];
+```</p>
+
+<p>This code will cache your drawing code into a <code>UIImage</code> that's <code>32x32</code> or <code>64x64</code> on a retina display. The uprez for retina is automatically handled in this function.</p>
+
+<h2>The example app</h2>
+
+<p>Ok let's jump into the code of the example app! As I said this app contains a button and a popup. Let's look at the popup first. The popup consists of a <code>UIView</code> that contains a <code>UIImageView</code> and <code>UILabel</code>. The <code>UILabel</code> is just a standard label, nothing fancy.</p>
+
+<p><img class="center" src="http://kgn.github.com/content/drawing/layout.png"></p>
+
+<p>In <code>viewDidLoad</code> the image displayed in the popup's <code>UIImageView</code> is set to <code>[self popupImage]</code> and the normal and highlight image for the button are set to <code>[self debutsImage]</code> and <code>[self debutsHighlightedImage]</code>.</p>
+
+<p>```
+- (void)viewDidLoad{</p>
+
+<pre><code>[super viewDidLoad];
+
+[self.popupImageView setImage:[self popupImage]];    
+
+[self.debutsButton setImage:[self debutsImage] forState:UIControlStateNormal];
+[self.debutsButton setImage:[self debutsHighlightedImage] forState:UIControlStateHighlighted];    
+</code></pre>
+
+<p>}
+<code>``
+*In the</code>viewDidLoad` of the example app there is also some code to setup the popup for animation, but that's not important to this post so it was left out of the above code snippet.*</p>
+
+<p>These functions, that return images, are defined in <a href="https://github.com/kgn/PaintCodeExample/blob/master/PaintCodeExample/PCViewController%2BPaintCode.m">PCViewController+PaintCode.m</a>. The drawing code was split out into it's own category so the 500 lines of drawing code doesn't clutter the main view controller found in <a href="https://github.com/kgn/PaintCodeExample/blob/master/PaintCodeExample/PCViewController.m">PCViewController.m</a>.</p>
+
+<p>The structure of these functions is similar but with different drawing code, for example here is an abridged version of <code>popupImage</code>:</p>
+
+<p>```
+- (UIImage *)popupImage{</p>
+
+<pre><code>static UIImage *image = nil;
+if(image == nil){
+    image = [UIImage imageForSize:CGSizeMake(120, 60) withDrawingBlock:^{
+        // Drawing code...
+    }];
+}
+return image;
+</code></pre>
+
+<p>```</p>
+
+<p>This code uses the <code>BBlock</code> method mentioned above to draw into an image that's <code>120x60</code>, the resulting image is stored in a <code>static UIImage</code> so we can call this method multiple times and we will always get the same <code>UIImage</code>. If we used this technique for an image in a table view without the <code>static</code> we wouldn't get any savings from caching the code in a <code>UIImage</code> because the drawing code would be evaluated whenever the function was called which would be every time a row needed to be redrawn.</p>
+
+<p>This also lets us get a little tricky in <code>debutsHighlightedImage</code>. The highlight state of this button is the same icon as the normal state, but with a pink glow. So we can draw the glow and then draw the <code>debutsImage</code> ontop of it!</p>
+
+<p><img class="center" src="http://kgn.github.com/content/drawing/buttonicons.png"></p>
+
+<p>```
+- (UIImage *)debutsHighlightedImage{</p>
+
+<pre><code>static UIImage *image = nil;
+if(image == nil){
+    CGSize imageSize = CGSizeMake(42, 42);
+    image = [UIImage imageForSize:imageSize withDrawingBlock:^{
+        // Drawing code for the pink glow...
+
+        // Draw the debuts image ontop of the glow
+        CGRect imageRect = CGRectZero;
+        imageRect.size = imageSize;
+        [[self debutsImage] drawInRect:imageRect];
+    }]; 
+}
+return image;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Again because the image returned from <code>debutsImage</code> is <code>static</code> the drawing code will only be evaluated once so we are free to use this function multiple times without paying for multiple evaluations of the drawing code.</p>
+
+<h2>Conclusion</h2>
+
+<p>There are lots of other ways to used drawing code cached into images. In apps where I've written my own <code>drawRect</code> method I've used a similar approach where I cache the drawing code into an image and then draw that image into the rect, stretching it, tiling it, or creating an image that fills the view and drawing that.</p>
+
+<p>```
+- (void)drawRect:(CGRect)rect{</p>
+
+<pre><code>static UIImage *image = nil;
+if(image == nil){
+    image = [UIImage imageForSize:self.bounds withDrawingBlock:^{
+        // Drawing code...
+    }];
+}
+[image drawInRect:self.bounds];
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images.</p>
+]]></content>
+  </entry>
+  
+</feed>
