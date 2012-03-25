@@ -4,7 +4,7 @@
   <title><![CDATA[kgn]]></title>
   <link href="http://kgn.github.com/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-22T23:35:45-07:00</updated>
+  <updated>2012-03-24T19:25:05-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -114,8 +114,6 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>- (UIImage *)debutsHighlightedImage{
 </span><span class='line'>    static UIImage *image = nil;
 </span><span class='line'>    if(image == nil){
@@ -124,9 +122,7 @@
 </span><span class='line'>            // Drawing code for the pink glow...
 </span><span class='line'>            
 </span><span class='line'>            // Draw the debuts image ontop of the glow
-</span><span class='line'>            CGRect imageRect = CGRectZero;
-</span><span class='line'>            imageRect.size = imageSize;
-</span><span class='line'>            [[self debutsImage] drawInRect:imageRect];
+</span><span class='line'>            [[self debutsImage] drawAtPoint:CGPointZero];
 </span><span class='line'>        }]; 
 </span><span class='line'>    }
 </span><span class='line'>    return image;
@@ -155,7 +151,7 @@
 </span><span class='line'>            // Drawing code...
 </span><span class='line'>        }];
 </span><span class='line'>    }
-</span><span class='line'>    [image drawInRect:self.bounds];
+</span><span class='line'>    [image drawAtPoint:CGPointZero];
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 
