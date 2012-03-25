@@ -90,9 +90,7 @@ This also lets us get a little tricky in `debutsHighlightedImage`. The highlight
             // Drawing code for the pink glow...
             
             // Draw the debuts image ontop of the glow
-            CGRect imageRect = CGRectZero;
-            imageRect.size = imageSize;
-            [[self debutsImage] drawInRect:imageRect];
+            [[self debutsImage] drawAtPoint:CGPointZero];
         }]; 
     }
     return image;
@@ -113,13 +111,13 @@ There are lots of other ways to used drawing code cached into images. In apps wh
             // Drawing code...
         }];
     }
-    [image drawInRect:self.bounds];
+    [image drawAtPoint:CGPointZero];
 }
 ```
 
 *This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation, like storing and comparing the size of the view. Also `static` couldn't be used, but you could use a `UIImage` ivar instead.*
 
-Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images.
+Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images. 
 
 Hit me up on twitter([@_kgn](http://twitter.com/_kgn)) if you want to discuss this post.
 
