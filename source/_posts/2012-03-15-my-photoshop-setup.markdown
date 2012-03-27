@@ -54,5 +54,9 @@ Norm's UI Toolkit includes some great custom shapes that I use a lot, especially
 
 {% img center http://kgn.github.com/content/photoshop/shapes.png %}
 
+Outside of Photoshop I always replace the default icon with one from [Sebastiaan de With](http://blog.cocoia.com/2009/photoshop-replacement-icon/), and whenever I'm working on iPhone or iPad designs I always have [Skala Preview](http://bjango.com/mac/skalapreview/) running.
+
+{% img center http://kgn.github.com/content/photoshop/dock.png %}
+
 I hope this was useful and I hope to put together some more Photoshop tips. If you haven't already read the articles on [bjango.com](http://bjango.com/articles/) stop what you are doing an go read them all right now!
 
