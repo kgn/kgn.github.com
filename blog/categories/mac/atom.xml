@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-31T00:37:06-07:00</updated>
+  <updated>2012-03-31T00:38:23-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -18,7 +18,7 @@
     <link href="http://kgn.github.com/blog/2012/03/21/caching-drawing-code/"/>
     <updated>2012-03-21T20:52:00-07:00</updated>
     <id>http://kgn.github.com/blog/2012/03/21/caching-drawing-code</id>
-    <content type="html"><![CDATA[<p><em><strong>Updates</strong>: On March 31st this post was updated based on feedback on twitter about using <code>static</code> instead of <code>NSCache</code>.</em></p>
+    <content type="html"><![CDATA[<p><em><strong>Updates</strong>: On March 31st this post was updated based on feedback on twitter about using <code>NSCache</code> instead of <code>static</code>.</em></p>
 
 <p>I've been doing more and more drawing in code in my Cocoa projects recently and I'd like to share some tips, specifically how to cache drawing code into images for faster redraw. I've created a simple project for this post, the source of which can be found on <a href="https://github.com/kgn/PaintCodeExample">GitHub</a>.</p>
 
