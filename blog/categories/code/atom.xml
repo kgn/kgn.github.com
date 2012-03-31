@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Code | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/code/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-27T14:59:30-07:00</updated>
+  <updated>2012-03-31T00:37:06-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -18,7 +18,9 @@
     <link href="http://kgn.github.com/blog/2012/03/21/caching-drawing-code/"/>
     <updated>2012-03-21T20:52:00-07:00</updated>
     <id>http://kgn.github.com/blog/2012/03/21/caching-drawing-code</id>
-    <content type="html"><![CDATA[<p>I've been doing more and more drawing in code in my Cocoa projects recently and I'd like to share some tips, specifically how to cache drawing code into images for faster redraw. I've created a simple project for this post, the source of which can be found on <a href="https://github.com/kgn/PaintCodeExample">GitHub</a>.</p>
+    <content type="html"><![CDATA[<p><em><strong>Updates</strong>: On March 31st this post was updated based on feedback on twitter about using <code>static</code> instead of <code>NSCache</code>.</em></p>
+
+<p>I've been doing more and more drawing in code in my Cocoa projects recently and I'd like to share some tips, specifically how to cache drawing code into images for faster redraw. I've created a simple project for this post, the source of which can be found on <a href="https://github.com/kgn/PaintCodeExample">GitHub</a>.</p>
 
 <!-- more -->
 
@@ -33,7 +35,7 @@
 
 <p><img class="center" src="http://kgn.github.com/content/drawing/multires.png"></p>
 
-<p>However drawing in code can cause performance issues because every time <code>setNeedsDisplay</code> is called on a view the drawing code needs to re-evaluate. There are also cases where images are expected, like buttons and image views. Fortunately drawing code can be cached into images and used just like an image loaded off of disk (<em>thanks to <a href="http://twitter.com/badeen">@badeen</a> for originally turning me onto this approach</em>). I've put together a category for <code>UIImage</code> and <code>NSImage</code> in my <a href="https://github.com/kgn/BBlock">BBlock</a> project that makes creating images with drawing code easier.</p>
+<p>However drawing in code can cause performance issues because every time <code>setNeedsDisplay</code> is called on a view the drawing code needs to re-evaluate. This is especially noticeable in things like <code>UITableView</code> scroll performance. There are also cases where images are expected, like buttons and image views. Fortunately drawing code can be cached into images and used just like an image loaded off of disk (<em>thanks to <a href="http://twitter.com/badeen">@badeen</a> for originally turning me onto this approach</em>). I've put together a category for <code>UIImage</code> and <code>NSImage</code> in my <a href="https://github.com/kgn/BBlock">BBlock</a> project that makes creating images with drawing code easier.</p>
 
 <p>```
 UIImage *image = [UIImage imageForSize:CGSizeMake(32, 32) withDrawingBlock:<sup>{</sup></p>
@@ -45,6 +47,19 @@ UIImage *image = [UIImage imageForSize:CGSizeMake(32, 32) withDrawingBlock:<sup>
 ```</p>
 
 <p>This code will cache your drawing code into a <code>UIImage</code> that's <code>32x32</code> or <code>64x64</code> on a retina display. The uprez for retina is automatically handled in this function, you can see what this function is doing <a href="https://github.com/kgn/BBlock/blob/master/UIImage%2BBBlock.m">here</a>.</p>
+
+<p><strong>Update</strong>: There is now a new function in <a href="https://github.com/kgn/BBlock/blob/master/UIImage%2BBBlock.h">UIImage+BBlock.h</a> that caches the image in a <code>NSCache</code>.</p>
+
+<p>```
+UIImage *image = [UIImage imageWithIdentifier:@"icon" forSize:CGSizeMake(32, 32) andDrawingBlock:<sup>{</sup></p>
+
+<pre><code>// Drawing code…   
+</code></pre>
+
+<p>}];
+```</p>
+
+<p>Originally I recommended using <code>static</code> to store the resulting image but it was pointed out that <code>NSCache</code> is better for memory management. This post has been updated below with more information about the advantages of <code>NSCache</code> over <code>static</code>.</p>
 
 <h2>The example app</h2>
 
@@ -76,66 +91,64 @@ UIImage *image = [UIImage imageForSize:CGSizeMake(32, 32) withDrawingBlock:<sup>
 <p>```
 - (UIImage *)popupImage{</p>
 
-<pre><code>static UIImage *image = nil;
-if(image == nil){
-    image = [UIImage imageForSize:CGSizeMake(120, 60) withDrawingBlock:^{
-        // Drawing code...
-    }];
-}
-return image;
+<pre><code>return [UIImage imageWithIdentifier:@"popupImage" forSize:CGSizeMake(120, 60) andDrawingBlock:^{
+    // Drawing code...
+}];
 </code></pre>
 
-<p>```</p>
+<p>}
+<code>``
+**Update**: This method originally used</code>static<code>to ensure that the drawing code was only executed once. However this new</code>BBlock<code>method now caches the image in an</code>NSCache` with the identifier name given. If the identifier doesn't exist in the cache the drawing code is executed and rendered to the returned image. If the identifier exists in the cache the cached image is returned and the drawing code is not run.</p>
 
-<p>This code uses the <code>BBlock</code> method mentioned above to draw into an image that's <code>120x60</code>, the resulting image is stored in a <code>static UIImage</code> so we can call this method multiple times and we will always get the same <code>UIImage</code>. If we used this technique for an image in a table view without the <code>static</code> we wouldn't get any savings from caching the code in a <code>UIImage</code> because the drawing code would be evaluated whenever the function was called which would be every time a row needed to be redrawn.</p>
+<p>This code uses the <code>BBlock</code> method mentioned above to draw into an image that's <code>120x60</code>, <strike>the resulting image is stored in a <code>static UIImage</code> so we can call this method multiple times and we will always get the same <code>UIImage</code>. If we used this technique for an image in a table view without the <code>static</code> we wouldn't get any savings from caching the code in a <code>UIImage</code> because the drawing code would be evaluated whenever the function was called which would be every time a row needed to be redrawn.</strike></p>
 
-<p>This also lets us get a little tricky in <code>debutsHighlightedImage</code>. The highlight state of this button is the same icon as the normal state, but with a pink glow. So we can draw the glow and then draw the <code>debutsImage</code> ontop of it!</p>
+<p>This caching lets us get a little tricky in <code>debutsHighlightedImage</code>. The highlight state of this button is the same icon as the normal state, but with a pink glow. So we can draw the glow and then draw the <code>debutsImage</code> ontop of it!</p>
 
 <p><img class="center" src="http://kgn.github.com/content/drawing/buttonicons.png"></p>
 
 <p>```
 - (UIImage *)debutsHighlightedImage{</p>
 
-<pre><code>static UIImage *image = nil;
-if(image == nil){
-    CGSize imageSize = CGSizeMake(42, 42);
-    image = [UIImage imageForSize:imageSize withDrawingBlock:^{
-        // Drawing code for the pink glow...
+<pre><code>return [UIImage imageWithIdentifier:@"debutsHighlightedImage" forSize:CGSizeMake(42, 42) andDrawingBlock:^{
+    // Drawing code for the pink glow...
 
-        // Draw the debuts image ontop of the glow
-        [[self debutsImage] drawAtPoint:CGPointZero];
-    }]; 
-}
-return image;
+    // Draw the debuts image ontop of the glow
+    [[self debutsImage] drawAtPoint:CGPointZero];
+}];
 </code></pre>
 
 <p>}
 ```</p>
 
-<p>Again because the image returned from <code>debutsImage</code> is <code>static</code> the drawing code will only be evaluated once so we are free to use this function multiple times without paying for multiple evaluations of the drawing code.</p>
+<p>Again because the image returned from <code>debutsImage</code> is cached the drawing code will only be evaluated once so we are free to use this function multiple times without paying for multiple evaluations of the drawing code.</p>
+
+<h2>Update: NSCache</h2>
+
+<p>As I've mentioned in this post the code examples here and in the sample app used <code>static UIImage</code> to ensure that the drawing code was only evaluated once. However <a href="https://twitter.com/#!/henrinormak/status/185638889552228353">@henrinormak</a> on twitter wondered about memory warnings, luckily <a href="https://twitter.com/#!/crizzler/status/185419980567883778">@crizzler</a> had suggested using <code>NSCache</code> instead of static. I had never used <code>NSCache</code> before so I did some reading on it and some experimenting and it is a perfect fit for caching drawing code! It is much better than <code>static</code> for memory warnings because a static's object should not be released. Also <code>NSCache</code> automatically handles releasing cached objects when a memory warning is received on iOS! So when caching images into <code>NSCache</code> if the app receives a memory warning <code>NSCache</code> will release objects, then the next time the drawing code is run it will re-add the image to the cache.</p>
+
+<p>I'd really wanted to add an internal caching mechanism, like <code>[UIImage imageNamed]</code> does, to <code>BBlock</code> but I wasn't sure the best approach. <code>NSCache</code> is a perfect fit for this, so a new method was added to <code>BBlock</code> which you can check out <a href="https://github.com/kgn/BBlock/blob/master/UIImage%2BBBlock.m">here</a>.</p>
+
+<p><a href="http://www.cocoabuilder.com/archive/cocoa/285674-simple-low-memory-warning.html">OS X doesn't receive memory warnings</a> the way that iOS does but using <code>NSCache</code> is still very convenient and if they ever add memory warnings on OS X then your app will automatically take advantage of them. <code>BBlock</code> contains an identical api of it's <a href="https://github.com/kgn/BBlock/blob/master/NSImage%2BBBlock.h">drawing code category for NSImage</a>.</p>
 
 <h2>Conclusion</h2>
 
-<p>There are lots of other ways to used drawing code cached into images. In apps where I've written my own <code>drawRect</code> method I've used a similar approach where I cache the drawing code into an image and then draw that image into the rect, stretching it, tiling it, or creating an image that fills the view and drawing that.</p>
+<p>There are lots of other ways to use drawing code cached into images. In apps where I've written my own <code>drawRect</code> method I've used a similar approach where I render the drawing code into an image and then draw that image into the view, stretching it, tiling it, or creating an image that fills the view and drawing that.</p>
 
 <p>```
 - (void)drawRect:(CGRect)rect{</p>
 
-<pre><code>static UIImage *image = nil;
-if(image == nil){
-    image = [UIImage imageForSize:self.bounds withDrawingBlock:^{
-        // Drawing code...
-    }];
-}
+<pre><code>UIImage *image = [UIImage imageWithIdentifier:@"customView" forSize:self.bounds.size andDrawingBlock:^{
+    // Drawing code...
+}];
 [image drawAtPoint:CGPointZero];
 </code></pre>
 
 <p>}
 ```</p>
 
-<p><em>This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation, like storing and comparing the size of the view. Also <code>static</code> couldn't be used, but you could use a <code>UIImage</code> ivar instead.</em></p>
+<p><em>This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation, like storing and comparing the size of the view. Also <code>BBlock</code>'s internal cache couldn't be used, but you could use a <code>UIImage</code> ivar or your own <code>NSCache</code> instead.</em></p>
 
-<p>Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images.</p>
+<p>Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images. I've tried to make this super easy to do and wrap up all the retina and caching logic into <a href="https://github.com/kgn/BBlock">BBlock</a> and I hope you find it useful!</p>
 
 <p>Hit me up on twitter(<a href="http://twitter.com/_kgn">@_kgn</a>) if you want to discuss this post.</p>
 ]]></content>
