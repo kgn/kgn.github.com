@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | kgn]]></title>
   <link href="http://kgn.github.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://kgn.github.com/"/>
-  <updated>2012-03-31T00:50:51-07:00</updated>
+  <updated>2012-03-31T00:59:15-07:00</updated>
   <id>http://kgn.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -59,7 +59,7 @@ UIImage *image = [UIImage imageWithIdentifier:@"icon" forSize:CGSizeMake(32, 32)
 <p>}];
 ```</p>
 
-<p>Originally I recommended using <code>static</code> to store the resulting image but it was pointed out that <code>NSCache</code> is better for memory management. This post has been updated below with more information about the advantages of <code>NSCache</code> over <code>static</code>.</p>
+<p>Originally I recommended using <code>static</code> to store the resulting image but it was pointed out that <code>NSCache</code> is better for memory management. This post has been updated with more information about the advantages of <code>NSCache</code> over <code>static</code>.</p>
 
 <h2>The example app</h2>
 
@@ -125,7 +125,7 @@ UIImage *image = [UIImage imageWithIdentifier:@"icon" forSize:CGSizeMake(32, 32)
 
 <h2>Update: NSCache</h2>
 
-<p>As I've mentioned in this post the code examples here and in the sample app used to use <code>static UIImage</code> to ensure that the drawing code was only evaluated once. However <a href="https://twitter.com/#!/henrinormak/status/185638889552228353">@henrinormak</a> on twitter wondered about memory warnings, luckily <a href="https://twitter.com/#!/crizzler/status/185419980567883778">@crizzler</a> had suggested using <code>NSCache</code> instead of static. I had never used <code>NSCache</code> before so I did some reading on it and some experimenting and it is a perfect fit for caching drawing code! It is much better than <code>static</code> for memory warnings because a static's object should not be released. Also <code>NSCache</code> automatically handles releasing cached objects when a memory warning is received on iOS! So when caching images into <code>NSCache</code> if the app receives a memory warning <code>NSCache</code> will release objects, then the next time the drawing code is run it will re-add the image to the cache.</p>
+<p>As I've mentioned the code examples here and in the sample app originally use <code>static UIImage</code> to ensure that the drawing code was only evaluated once. However <a href="https://twitter.com/#!/henrinormak/status/185638889552228353">@henrinormak</a> on twitter wondered about memory warnings, luckily <a href="https://twitter.com/#!/crizzler/status/185419980567883778">@crizzler</a> had suggested using <code>NSCache</code> instead of static. I had never used <code>NSCache</code> before so I did some reading on it and some experimenting and it is a perfect fit for caching drawing code! It is much better than <code>static</code> for memory warnings because a static's object should not be released. Also <code>NSCache</code> automatically handles releasing cached objects when a memory warning is received on iOS! So when caching images into <code>NSCache</code> if the app receives a memory warning <code>NSCache</code> will release objects, then the next time the drawing code is run it will re-add the image to the cache.</p>
 
 <p>I had really wanted to add an internal caching mechanism, like <code>[UIImage imageNamed]</code> does, to <code>BBlock</code> but I wasn't sure of the best approach. <code>NSCache</code> is a perfect fit for this, so a new method was added to <code>BBlock</code> which you can check out <a href="https://github.com/kgn/BBlock/blob/master/UIImage%2BBBlock.m">here</a>.</p>
 
@@ -149,7 +149,7 @@ UIImage *image = [UIImage imageWithIdentifier:@"icon" forSize:CGSizeMake(32, 32)
 
 <p><em>This code example only works for static views were the size doesn't change. If the size of the view changed there would need to be some sort of cache invalidation, like storing and comparing the size of the view. Also <code>BBlock</code>'s internal cache couldn't be used, but you could use a <code>UIImage</code> ivar or your own <code>NSCache</code> instead.</em></p>
 
-<p>Another way to use drawing code cached into an image is to set the contents of a view's <code>CALayer</code>, this wasn't crucial to the sample app so I didn't want to dive into it in this post but there is a <a href="https://github.com/kgn/PaintCodeExample/tree/CALayer">CALayer branch</a> that demonstrates this on the popup view if you are curious.</p>
+<p>Another way to use drawing code cached into an image is to set the contents of a view's <code>CALayer</code>, this wasn't crucial to the sample app so I didn't want to dive into it in this post but there is a <a href="https://github.com/kgn/PaintCodeExample/tree/CALayer">CALayer branch</a> in the sample app that demonstrates this on the popup view if you are curious.</p>
 
 <p>Obviously it's not possible to cache everything, like a gradient in a widget that scales horizontally and vertically, but as much as possible it's a win to cache drawing code into images. I've tried to make this super easy to do and wrap up all the retina and caching logic into <a href="https://github.com/kgn/BBlock">BBlock</a> and I hope you find it useful!</p>
 
